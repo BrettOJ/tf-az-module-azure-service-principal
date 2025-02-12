@@ -101,10 +101,6 @@ variable "app_role_assignment_required" {
   default     = false
 }
 
-variable "client_id" {
-  description = "The client ID of the application for which to create a service principal."
-  type        = string
-}
 
 variable "description" {
   description = "A description of the service principal provided for internal end-users."
@@ -128,11 +124,6 @@ variable "notification_email_addresses" {
   default     = []
 }
 
-variable "owners" {
-  description = "A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned."
-  type        = set(string)
-  default     = []
-}
 
 variable "preferred_single_sign_on_mode" {
   description = "The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are oidc, password, saml or notSupported. Omit this property or specify a blank string to unset."

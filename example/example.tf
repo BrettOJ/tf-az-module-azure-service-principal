@@ -24,7 +24,7 @@ module "azuread_service_principal" {
   account_enabled              = var.account_enabled
   alternative_names            = var.alternative_names
   app_role_assignment_required = var.app_role_assignment_required
-  client_id                    = var.client_id
+  client_id                    = module.azure_application_registration.aad_app_reg.client_id
   description                  = var.description
   feature_tags = {
     custom_single_sign_on = var.feature_tags_custom_single_sign_on
@@ -35,7 +35,7 @@ module "azuread_service_principal" {
   login_url                     = var.login_url
   notes                         = var.notes
   notification_email_addresses  = var.notification_email_addresses
-  owners                        = var.owners
+  owners                        = [data.azuread_client_config.current.object_id]
   preferred_single_sign_on_mode = var.preferred_single_sign_on_mode
   saml_single_sign_on = {
     relay_state = var.saml_single_sign_on_relay_state
